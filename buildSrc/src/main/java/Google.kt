@@ -1,7 +1,7 @@
 object Google {
 
-    private const val materialVersion = "1.12.0-alpha03"
-    const val material = "com.google.android.material:material:$materialVersion"
+    private const val materialVersion = "1.3.0-alpha05"
+    const val material = "androidx.compose.material3:material3:$materialVersion"
     const val playCoreKtx = "com.google.android.play:core-ktx:1.8.1"
     const val playServicesMaps = "com.google.android.gms:play-services-maps:18.1.0"
     const val playServicesLocation = "com.google.android.gms:play-services-location:21.0.1"
