@@ -19,3 +19,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Rahtuk"
 include(":app")
+include(":Feature")
