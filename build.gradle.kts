@@ -21,4 +21,5 @@ buildscript {
 }
 plugins {
     id(Plugins.kotlinKsp) version Plugins.kotlinKspVersion apply false
+    id(Plugins.jvm) version Plugins.kotlinJvmVersion apply false
 }

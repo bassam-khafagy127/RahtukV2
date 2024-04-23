@@ -1,5 +1,6 @@
 object Plugins {
     const val kotlinKspVersion = "1.9.10-1.0.13"
+    const val kotlinJvmVersion = "1.9.10"
 
     const val androidApplication = "com.android.application"
     const val androidLibrary = "com.android.library"
@@ -13,4 +14,6 @@ object Plugins {
     const val appDistribution = "com.google.firebase.appdistribution"
     const val spotless = "com.diffplug.spotless"
     const val ktlint ="org.jlleitschuh.gradle.ktlint"
+    const val jvm ="org.jetbrains.kotlin.jvm"
+    const val javaLibrary ="java-library"
 }
