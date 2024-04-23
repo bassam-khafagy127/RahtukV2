@@ -4,6 +4,7 @@ object Plugins {
 
     const val androidApplication = "com.android.application"
     const val androidLibrary = "com.android.library"
+    const val jetbrainsKotlin= "org.jetbrains.kotlin.android"
     const val kotlinParcelize = "kotlin-parcelize"
     const val android = "android"
     const val kotlinKsp = "com.google.devtools.ksp"

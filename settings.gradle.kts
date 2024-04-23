@@ -19,4 +19,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "Rahtuk"
 include(":app")
-include(":Feature")
+include(":features")
+include(":features:data")
+include(":features:domain")
+include(":features:feature")
+include(":features:data:home")

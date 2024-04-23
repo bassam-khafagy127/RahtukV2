@@ -75,6 +75,8 @@ android {
 }
 
 dependencies {
+    //Modules
+    implementation(project(Modules.appHome))
 
     // AndroidX
     implementation(AndroidX.coreKtx)
