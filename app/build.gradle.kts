@@ -1,19 +1,25 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id(Plugins.androidApplication)
+    kotlin(Plugins.android)
+    id(Plugins.kotlinParcelize)
+    id(Plugins.kotlinKsp)
+    id(Plugins.crashlytics)
+    id(Plugins.perf)
+    id(Plugins.navigationSafeargs)
 }
 
 android {
-    namespace = "com.bassamkhafagy.rahtukpro"
-    compileSdk = 34
+    compileSdk = Android.compileSdk
+    @Suppress("UnstableApiUsage")
+    buildToolsVersion = Android.buildTools
+    namespace = Android.appId
 
     defaultConfig {
-        applicationId = "com.bassamkhafagy.rahtukpro"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
-
+        applicationId = Android.appId
+        minSdk = Android.minSdk
+        targetSdk = Android.targetSdk
+        versionCode = Android.versionCode
+        versionName = Android.versionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
@@ -28,20 +34,39 @@ android {
                 "proguard-rules.pro"
             )
         }
+
+        getByName("debug") {
+            isDebuggable = true
+            versionNameSuffix = ".dev"
+            applicationIdSuffix = ".dev"
+            manifestPlaceholders["appName"] = "Dev.Rahutk"
+        }
     }
+
+    ksp {
+        arg("room.schemaLocation", "$projectDir/schemas")
+        arg("room.incremental", true.toString())
+    }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_17.toString()
+        freeCompilerArgs = listOf("-XXLanguage:+InlineClasses", "-opt-in=kotlin.RequiresOptIn")
     }
+
     buildFeatures {
+        viewBinding = true
         compose = true
     }
+
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = Compose.kotlinCompilerComposeVersion
     }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -51,19 +76,113 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation("androidx.activity:activity-compose:1.8.1")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    // AndroidX
+    implementation(AndroidX.coreKtx)
+    implementation(AndroidX.appCompat)
+    implementation(AndroidX.activityKtx)
+    implementation(AndroidX.fragmentKtx)
+    implementation(AndroidX.navigationFragment)
+    implementation(AndroidX.navigationUI)
+    implementation(AndroidX.legacySupport)
+    implementation(AndroidX.webkit)
+    implementation(AndroidX.recyclerview)
+    implementation(AndroidX.constraintlayout)
+    implementation(AndroidX.preferenceKtx)
+    implementation(AndroidX.viewpager)
+    implementation(AndroidX.swipeRefreshLayout)
+    implementation(AndroidX.livedataRuntime)
+    implementation(AndroidX.lifecycleLivedata)
+    implementation(AndroidX.lifecycleProcess)
+    implementation(AndroidX.lifecycleRuntime)
+    implementation(AndroidX.lifecycleViewmodel)
+    implementation(AndroidX.lifecycleViewmodelSavedstate)
+    implementation(AndroidX.multidex)
+
+    // Google
+    implementation(Google.material)
+    implementation(Google.playCoreKtx)
+    implementation(Google.playServicesMaps)
+    implementation(Google.playServicesPlaces)
+    implementation(Google.playServicesAuth)
+    implementation(Google.playServicesAuthPhone)
+
+    // FlowBinding
+    implementation(FlowBinding.material)
+    implementation(FlowBinding.android)
+    implementation(FlowBinding.recyclerview)
+    implementation(FlowBinding.swiperefreshlayout)
+
+    // Compose
+    implementation(Compose.viewbinding)
+    implementation(Compose.navigation)
+    implementation(Compose.ui)
+    implementation(Compose.tooling)
+    implementation(Compose.util)
+    implementation(Compose.activity)
+    implementation(Compose.material)
+    implementation(Compose.swipeRefresh)
+    implementation(Compose.iconsCore)
+    implementation(Compose.iconsExtended)
+    implementation(Compose.maps)
+    implementation(Compose.charts)
+
+    // Coil
+    implementation(Coil.android)
+    implementation(Coil.compose)
+    implementation(Coil.svg)
+
+    // Arrow
+    implementation(Arrow.core)
+    implementation(Arrow.syntax)
+    ksp(Arrow.meta)
+
+    // Retrofit
+    implementation(Retrofit.core)
+    implementation(Retrofit.converterMoshi)
+    implementation(Retrofit.moshi)
+    ksp(Retrofit.moshiKCG)
+
+    // Okhttp
+    implementation(platform(Okhttp.bom))
+    implementation(Okhttp.okhttp)
+    implementation(Okhttp.urlConnection)
+    implementation(Okhttp.interceptor)
+
+    // CameraX
+    implementation(CameraX.camera2)
+    implementation(CameraX.lifecycle)
+    implementation(CameraX.camera3)
+
+    // Kotlinx
+    implementation(Kotlinx.coroutinesCore)
+    implementation(Kotlinx.coroutinesAndroid)
+    implementation(Kotlinx.coroutinesPlayServices)
+
+    // Lottie
+    implementation(Lottie.android)
+    implementation(Lottie.compose)
+
+    // Firebase
+    implementation(platform(Firebase.bom))
+    implementation(Firebase.config)
+    implementation(Firebase.analytics)
+    implementation(Firebase.crashlytics)
+    implementation(Firebase.dataBase)
+    implementation(Firebase.fireStore)
+    implementation(Firebase.messaging)
+    implementation(Firebase.perf)
+
+
+    //Chucker
+    debugImplementation(Chucker.library)
+    releaseImplementation(Chucker.libraryNoOp)
+
+    // Test
+    testImplementation(Junit.junit4)
+    androidTestImplementation(AndroidXTest.runner)
+    androidTestImplementation(ComposeTest.uiTestJunit4)
+    debugImplementation(ComposeTest.uiTestManifest)
+    androidTestImplementation(Junit.junit4)
+    debugImplementation(Compose.tooling)
+
 }

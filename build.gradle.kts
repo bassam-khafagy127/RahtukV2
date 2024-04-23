@@ -1,5 +1,24 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven { url = uri("https://plugins.gradle.org/m2/") }
+        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("https://maven.google.com") }
+    }
+    dependencies {
+        classpath(Build.androidBuildTools)
+        classpath(Build.kotlinGradlePlugin)
+        classpath(Google.googleServices)
+        classpath(Firebase.crashlyticsPlugin)
+        classpath(Firebase.perfPlugin)
+        classpath(Firebase.appDistributionPlugin)
+        classpath(Build.androidNavigationSafeArgs)
+    }
+}
 plugins {
-    id("com.android.application") version "8.1.4" apply false
-    id("org.jetbrains.kotlin.android") version "1.8.10" apply false
+    id(Plugins.kotlinKsp) version Plugins.kotlinKspVersion apply false
 }
