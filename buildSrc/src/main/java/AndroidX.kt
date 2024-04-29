@@ -25,9 +25,9 @@ object AndroidX {
 
     const val constraintlayout = "androidx.constraintlayout:constraintlayout:2.1.4"
     const val preferenceKtx = "androidx.preference:preference-ktx:1.2.1"
-    const val recyclerview = "androidx.recyclerview:recyclerview:1.3.1"
-    const val viewpager = "androidx.viewpager2:viewpager2:1.1.0-beta02"
-    const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
+//    const val recyclerview = "androidx.recyclerview:recyclerview:1.3.1"
+//    const val viewpager = "androidx.viewpager2:viewpager2:1.1.0-beta02"
+//    const val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
     const val multidex = "androidx.multidex:multidex:2.0.1"
 }
 

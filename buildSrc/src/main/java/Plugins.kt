@@ -17,4 +17,5 @@ object Plugins {
     const val ktlint ="org.jlleitschuh.gradle.ktlint"
     const val jvm ="org.jetbrains.kotlin.jvm"
     const val javaLibrary ="java-library"
+    const val hilt ="dagger.hilt.android.plugin"
 }

@@ -17,6 +17,9 @@ buildscript {
         classpath(Firebase.perfPlugin)
         classpath(Firebase.appDistributionPlugin)
         classpath(Build.androidNavigationSafeArgs)
+
+        classpath(DaggerHilt.hiltAndroidGradlePlugin)
+
     }
 }
 plugins {

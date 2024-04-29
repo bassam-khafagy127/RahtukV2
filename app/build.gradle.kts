@@ -87,11 +87,8 @@ dependencies {
     implementation(AndroidX.navigationUI)
     implementation(AndroidX.legacySupport)
     implementation(AndroidX.webkit)
-    implementation(AndroidX.recyclerview)
     implementation(AndroidX.constraintlayout)
     implementation(AndroidX.preferenceKtx)
-    implementation(AndroidX.viewpager)
-    implementation(AndroidX.swipeRefreshLayout)
     implementation(AndroidX.livedataRuntime)
     implementation(AndroidX.lifecycleLivedata)
     implementation(AndroidX.lifecycleProcess)
@@ -111,7 +108,7 @@ dependencies {
     // FlowBinding
     implementation(FlowBinding.material)
     implementation(FlowBinding.android)
-    implementation(FlowBinding.recyclerview)
+//    implementation(FlowBinding.recyclerview)
     implementation(FlowBinding.swiperefreshlayout)
 
     // Compose
